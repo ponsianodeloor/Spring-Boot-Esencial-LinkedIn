@@ -80,5 +80,10 @@ public class Reunion {
 	public void addPersona(Persona persona) {
 		personas.add(persona);
 	}
+
+	@Override
+	public String toString() {
+		return "Reunion [id=" + id + ", asunto=" + asunto + ", fecha=" + fecha + "]";
+	}
 	
 }
