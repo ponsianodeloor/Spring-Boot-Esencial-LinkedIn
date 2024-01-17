@@ -1,29 +1,20 @@
 package dev.ponsianodeloor.spring.app.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.ponsianodeloor.spring.app.model.Persona;
+import dev.ponsianodeloor.spring.app.repository.PersonaRepository;
 
 @Service
 public class PersonaService {
-
-	private static final List<Persona> personas = new ArrayList<>();
 	
-	//se agregan 5 personas en la lista personas
-	static {
-		for (int i=0; i < 5; i++) {
-			personas.add(
-					new Persona(
-							i, 
-							"Persona Nombres " + i, 
-							"Persona Apellidos " + i));
-		}
-	}
+	@Autowired
+	private PersonaRepository personaRepository;
 	
 	public List<Persona> getAllPersonas(){
-		return personas;
+		return personaRepository.findAll();
 	}
 }

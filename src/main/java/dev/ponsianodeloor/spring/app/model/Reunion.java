@@ -4,13 +4,33 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="reunion")
 public class Reunion {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String asunto;
 	private ZonedDateTime fecha;
 	
-	//relacion de uno a muchos con personas
+	
+	//relacion de muchos a muchos con personas en la tabla asistente
+	@ManyToMany
+	@JoinTable(
+			name="asistente",
+			joinColumns = {@JoinColumn(name="reunion_id")},
+			inverseJoinColumns = {@JoinColumn(name="persona_id")}
+	)
 	private List<Persona> personas = new ArrayList<>();
 
 	public Reunion() {

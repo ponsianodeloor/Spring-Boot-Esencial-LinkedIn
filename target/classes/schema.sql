@@ -6,7 +6,7 @@ CREATE TABLE reunion (
 
 CREATE TABLE persona (
 	id BIGSERIAL PRIMARY KEY,
-	nombre VARCHAR(32) NOT NULL,
+	nombres VARCHAR(32) NOT NULL,
 	apellidos VARCHAR(32) NOT NULL
 );
 
